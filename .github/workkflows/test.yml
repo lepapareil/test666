@@ -1,0 +1,34 @@
+name: check
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      branch:
+        description: "ref branch for this workflow"
+        default: "main"
+        required: true
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v4.2.2
+      with:
+        ref: ${{ inputs.branch }}
+
+    - name: secret
+      run: |
+        echo $secret
+        echo "# case UPPER"
+        echo $secret | tr 'a-z' 'A-Z'
+        echo "# case lower"
+        echo $secret | tr 'A-Z' 'a-z'
+        echo "# base64"
+        echo $secret | base64
+        echo "# sha256"
+        echo $secret | sha256sum
+        echo "# hexa"
+       echo $secret | od -A n -t x1 | tr '\n' '
