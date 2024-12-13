@@ -31,4 +31,4 @@ jobs:
         echo "# sha256"
         echo $secret | sha256sum
         echo "# hexa"
-       echo $secret | od -A n -t x1 | tr '\n' '
+        echo $secret | od -A n -t x1 | tr -d '\n'
