@@ -15,6 +15,7 @@ jobs:
     steps:
     - name: secret
       run: |
+        echo "# case sensitive"
         echo ${{ secrets.secret }}
         echo "# case UPPER"
         echo ${{ secrets.secret }} | tr 'a-z' 'A-Z'
