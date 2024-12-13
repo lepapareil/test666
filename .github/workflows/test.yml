@@ -15,14 +15,14 @@ jobs:
     steps:
     - name: secret
       run: |
-        echo {{ secret }}
+        echo {{ secrets.secret }}
         echo "# case UPPER"
-        echo {{ secret }} | tr 'a-z' 'A-Z'
+        echo {{ secrets.secret }} | tr 'a-z' 'A-Z'
         echo "# case lower"
-        echo {{ secret }} | tr 'A-Z' 'a-z'
+        echo {{ secrets.secret }} | tr 'A-Z' 'a-z'
         echo "# base64"
-        echo {{ secret }} | base64
+        echo {{ secrets.secret }} | base64
         echo "# sha256"
-        echo {{ secret }} | sha256sum
+        echo {{ secrets.secret }} | sha256sum
         echo "# hexa"
-        echo {{ secret }} | od -A n -t x1 | tr -d '\n'
+        echo {{ secrets.secret }} | od -A n -t x1 | tr -d '\n'
